@@ -1,10 +1,10 @@
 from lxml import etree
 from decimal import Decimal
 from datetime import datetime
-from .emisor import Emisor
-from .receptor import Receptor
-from .concepto import Concepto
-from .impuesto import Impuesto
+from emisor import Emisor
+from receptor import Receptor
+from concepto import Concepto
+from impuesto import Impuesto
 
 
 class CFDI:
