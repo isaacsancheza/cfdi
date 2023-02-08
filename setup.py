@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='cfdi',
@@ -8,6 +8,6 @@ setup(
     author='Isaac Sánchez',
     author_email='isaacsancheza@outlook.com',
     license='MIT',
-    packages=['cfdi'],
+    packages=find_packages(),
     install_requires=['lxml'],
 )
