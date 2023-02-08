@@ -1,4 +1,4 @@
-from traslado import Traslado
+from .traslado import Traslado
 
 
 class Impuesto:

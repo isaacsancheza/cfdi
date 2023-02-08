@@ -1,4 +1,4 @@
-from impuesto import Impuesto
+from .impuesto import Impuesto
 
 
 class Concepto:

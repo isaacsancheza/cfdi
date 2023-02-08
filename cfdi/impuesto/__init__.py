@@ -1,5 +1,5 @@
 from decimal import Decimal
-from traslado import Traslado
+from .traslado import Traslado
 
 
 class Impuesto:
