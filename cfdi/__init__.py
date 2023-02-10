@@ -11,10 +11,14 @@ class CFDI:
     def __init__(self, string):
         self._root = etree.fromstring(string)
 
-        self.emisor = Emisor(self._root.find('.//{%s}Emisor' % self._root.nsmap['cfdi']))
-        self.receptor = Receptor(self._root.find('.//{%s}Receptor' % self._root.nsmap['cfdi']))
-        self.impuestos = Impuesto(self._root.find('.//{%s}Impuestos' % self._root.nsmap['cfdi']))
-        self.conceptos = [Concepto(node) for node in self._root.findall('.//{%s}Concepto' % self._root.nsmap['cfdi'])]
+        self.emisor = Emisor(self._root.find('./{%s}Emisor' % self._root.nsmap['cfdi']))
+        self.receptor = Receptor(self._root.find('./{%s}Receptor' % self._root.nsmap['cfdi']))
+        self.impuestos = Impuesto(self._root.find('./{%s}Impuestos' % self._root.nsmap['cfdi']))
+        self.conceptos = [
+            Concepto(node) for node in self._root.findall(
+                './{%s}Conceptos/{%s}Concepto' % (self._root.nsmap['cfdi'], self._root.nsmap['cfdi'])
+            )
+        ]
 
     @property
     def version(self):

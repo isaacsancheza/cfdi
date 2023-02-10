@@ -4,7 +4,7 @@ from impuesto import Impuesto
 class Concepto:
     def __init__(self, node):
         self._node = node
-        self.impuestos = Impuesto(self._node.find('.//{%s}Impuestos' % self._node.nsmap['cfdi']))
+        self.impuestos = Impuesto(self._node.find('./{%s}Impuestos' % self._node.nsmap['cfdi']))
 
     @property
     def clave_prod_serv(self):
