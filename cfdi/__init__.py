@@ -11,10 +11,14 @@ class CFDI:
     def __init__(self, string):
         self._root = etree.fromstring(string)
 
-        self.emisor = Emisor(self._root.find('.//{%s}Emisor' % self._root.nsmap['cfdi']))
-        self.receptor = Receptor(self._root.find('.//{%s}Receptor' % self._root.nsmap['cfdi']))
-        self.impuestos = Impuesto(self._root.find('.//{%s}Impuestos' % self._root.nsmap['cfdi']))
-        self.conceptos = [Concepto(node) for node in self._root.findall('.//{%s}Concepto' % self._root.nsmap['cfdi'])]
+        self.emisor = Emisor(self._root.find('./{%s}Emisor' % self._root.nsmap['cfdi']))
+        self.receptor = Receptor(self._root.find('./{%s}Receptor' % self._root.nsmap['cfdi']))
+        self.impuestos = Impuesto(self._root.find('./{%s}Impuestos' % self._root.nsmap['cfdi']))
+        self.conceptos = [
+            Concepto(node) for node in self._root.findall(
+                './{%s}Conceptos/{%s}Concepto' % (self._root.nsmap['cfdi'], self._root.nsmap['cfdi'])
+            )
+        ]
 
     @property
     def version(self):
@@ -29,7 +33,7 @@ class CFDI:
         return self._root.get('Moneda')
 
     @property
-    def tipo_de_cambio(self):
+    def tipo_cambio(self):
         return Decimal(self._root.get('TipoCambio'))
 
     @property
@@ -41,7 +45,7 @@ class CFDI:
         return Decimal(self._root.get('Total'))
 
     @property
-    def forma_de_pago(self):
+    def forma_pago(self):
         return self._root.get('FormaPago')
 
     @property
@@ -53,7 +57,7 @@ class CFDI:
         return self._root.get('TipoDeComprobante')
 
     @property
-    def metodo_de_pago(self):
+    def metodo_pago(self):
         return self._root.get('MetodoPago')
 
     @property
@@ -61,7 +65,7 @@ class CFDI:
         return self._root.get('LugarExpedicion')
 
     @property
-    def numero_de_certificado(self):
+    def no_certificado(self):
         return self._root.get('NoCertificado')
 
     @property
