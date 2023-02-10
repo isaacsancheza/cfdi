@@ -15,4 +15,4 @@ class Impuesto:
     def total_impuestos_trasladados(self):
         total_impuestos_traslados = self._node.get('TotalImpuestosTrasladados')
         if total_impuestos_traslados is not None:
-            return Decimal()
+            return Decimal(total_impuestos_traslados)
