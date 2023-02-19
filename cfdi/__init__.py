@@ -5,6 +5,7 @@ from .emisor import Emisor
 from .receptor import Receptor
 from .concepto import Concepto
 from .impuesto import Impuesto
+from .complemento import Complemento
 
 
 class CFDI:
@@ -19,6 +20,7 @@ class CFDI:
                 './{%s}Conceptos/{%s}Concepto' % (self._root.nsmap['cfdi'], self._root.nsmap['cfdi'])
             )
         ]
+        self.complemento = Complemento(self._root.find('./{%s}Complemento' % self._root.nsmap['cfdi']))
 
     @property
     def version(self):
