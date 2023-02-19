@@ -23,4 +23,7 @@ class Traslado:
 
     @property
     def base(self):
-        return Decimal(self._node.get('Base'))
+        value = self._node.get('Base', None)
+        if not value:
+            return None
+        return Decimal(value)

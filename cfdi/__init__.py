@@ -36,7 +36,10 @@ class CFDI:
 
     @property
     def tipo_cambio(self):
-        return Decimal(self._root.get('TipoCambio'))
+        value = self._root.get('TipoCambio')
+        if not value:
+            return None
+        return Decimal(value)
 
     @property
     def subtotal(self):
