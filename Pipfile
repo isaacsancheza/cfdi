@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-setuptools = "*"
 lxml = "*"
 
 [dev-packages]
+setuptools = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.9"
