@@ -8,6 +8,6 @@ setup(
     author='Isaac Sánchez',
     author_email='isaacsancheza@outlook.com',
     license='MIT',
-    packages=find_packages(),
+    packages=find_packages('./src'),
     install_requires=['lxml'],
 )
