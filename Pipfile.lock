@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b98fa3e78e5917eecfb928ae83236d1e4a151973dea5bba5443dd4cc34db3fcf"
+            "sha256": "efa6be927a21d1543e3221b1ae177e1effbcec17e77424cd169a66c19350aebf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -17,6 +17,10 @@
         ]
     },
     "default": {
+        "cfdi": {
+            "editable": true,
+            "path": "."
+        },
         "lxml": {
             "hashes": [
                 "sha256:01d36c05f4afb8f7c20fd9ed5badca32a2029b93b1750f571ccc0b142531caf7",
@@ -149,14 +153,6 @@
             ],
             "index": "pypi",
             "version": "==7.2.1"
-        },
-        "setuptools": {
-            "hashes": [
-                "sha256:95f00380ef2ffa41d9bba85d95b27689d923c93dfbafed4aecd7cf988a25e012",
-                "sha256:bb6d8e508de562768f2027902929f8523932fcd1fb784e6d573d2cafac995a48"
-            ],
-            "index": "pypi",
-            "version": "==67.3.2"
         },
         "tomli": {
             "hashes": [

@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 lxml = "*"
+cfdi = {editable = true, path = "."}
 
 [dev-packages]
-setuptools = "*"
 pytest = "*"
 
 [requires]
