@@ -1,15 +1,17 @@
-from lxml import etree
 from decimal import Decimal
 from datetime import datetime
-from .emisor import Emisor
-from .receptor import Receptor
-from .concepto import Concepto
-from .impuesto import Impuesto
-from .complemento import Complemento
+
+from lxml import etree
+
+from cfdi.emisor import Emisor
+from cfdi.receptor import Receptor
+from cfdi.concepto import Concepto
+from cfdi.impuesto import Impuesto
+from cfdi.complemento import Complemento
 
 
 class CFDI:
-    def __init__(self, string):
+    def __init__(self, string: str) -> None:
         self._root = etree.fromstring(string)
 
         self.emisor = Emisor(self._root.find('./{%s}Emisor' % self._root.nsmap['cfdi']))
@@ -23,72 +25,72 @@ class CFDI:
         self.complemento = Complemento(self._root.find('./{%s}Complemento' % self._root.nsmap['cfdi']))
 
     @property
-    def version(self):
+    def version(self) -> str :
         return self._root.get('Version')
 
     @property
-    def fecha(self):
+    def fecha(self) -> datetime:
         return datetime.strptime(self._root.get('Fecha'), '%Y-%m-%dT%H:%M:%S')
 
     @property
-    def moneda(self):
+    def moneda(self) -> str:
         return self._root.get('Moneda')
 
     @property
-    def tipo_cambio(self):
+    def tipo_cambio(self) -> Decimal | None:
         value = self._root.get('TipoCambio')
         if not value:
             return None
         return Decimal(value)
 
     @property
-    def subtotal(self):
+    def subtotal(self) -> Decimal:
         return Decimal(self._root.get('SubTotal'))
 
     @property
-    def total(self):
+    def total(self) -> Decimal:
         return Decimal(self._root.get('Total'))
 
     @property
-    def forma_pago(self):
+    def forma_pago(self) -> str:
         return self._root.get('FormaPago')
 
     @property
-    def condiciones_de_pago(self):
+    def condiciones_de_pago(self) -> str:
         return self._root.get('CondicionesDePago')
 
     @property
-    def tipo_de_comprobante(self):
+    def tipo_de_comprobante(self) -> str:
         return self._root.get('TipoDeComprobante')
 
     @property
-    def metodo_pago(self):
+    def metodo_pago(self) -> str:
         return self._root.get('MetodoPago')
 
     @property
-    def lugar_de_expedicion(self):
+    def lugar_de_expedicion(self) -> str:
         return self._root.get('LugarExpedicion')
 
     @property
-    def no_certificado(self):
+    def no_certificado(self) -> str:
         return self._root.get('NoCertificado')
 
     @property
-    def exportacion(self):
+    def exportacion(self) -> str:
         return self._root.get('Exportacion')
 
     @property
-    def serie(self):
+    def serie(self) -> str:
         return self._root.get('Serie')
 
     @property
-    def folio(self):
+    def folio(self) -> str:
         return self._root.get('Folio')
 
     @property
-    def certificado(self):
+    def certificado(self) -> str:
         return self._root.get('Certificado')
 
     @property
-    def sello(self):
+    def sello(self) -> str:
         return self._root.get('Sello')

@@ -1,4 +1,4 @@
-def serialize(obj):
+def serialize(obj: object) -> dict:
     dictionary = dict()
     for key in vars(obj):
         if key.startswith('_'):
